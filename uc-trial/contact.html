@@ -36,7 +36,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
   </head>
 
-  <body>
+  <body onload="defaultLoad()">
     <!-- Start Preloader Area -->
     <!-- <div class="preloader-area">
       <div class="spinner">
@@ -228,10 +228,16 @@
                           placeholder="Plan"
                           onChange="planFunction()"
                         >
-                          <option selected value="Free">Free</option>
-                          <option value="Basic">Basic</option>
-                          <option value="Professional">Professional</option>
-                          <option value="Premium">Premium</option>
+                          <option selected
+
+                          >Free</option>
+                          <option
+
+                           >Basic</option>
+                          <option 
+                          >Professional</option>
+                          <option 
+                          >Premium</option>
                         </select>
                         <div class="help-block with-errors"></div>
                       </div>
@@ -249,14 +255,15 @@
                         /> -->
                         <select
                           name="Plan Type"
-                          id="Plan Type"
+                          id="planType"
                           class="form-control"
                           required
                           data-error="Please select your Plan Type"
                           placeholder="Plan Type"
-                        >
+                        onchange="duration()"
+                          >
                           <option>Monthly</option>
-                          <option>Yearly</option>
+                          <option selected>Yearly</option>
                         </select>
                         <div class="help-block with-errors"></div>
                       </div>
@@ -327,9 +334,9 @@
                   <p>
                     <b
                       ><i class="fa fa-toggle-on" aria-hidden="true"></i
-                      >&nbsp;&nbsp; Plan type</b
-                    >
-                    - Yearly
+                      >&nbsp;&nbsp; Plan type-<span id="durationDisplay"></span
+                        ></b>
+                    <!-- - Yearly -->
                   </p>
                   <p>
                     <b
@@ -491,6 +498,20 @@
       function planFunction() {
         let x = document.getElementById("Plan").value;
         document.getElementById("planDisplay").innerHTML = x;
+      }
+      function duration(){
+        let y = document.getElementById("planType").value;
+        document.getElementById("durationDisplay").innerHTML = y;
+      }
+
+
+
+      function defaultLoad(){
+        let x = document.getElementById("Plan").value;
+        console.log(x);
+        document.getElementById("planDisplay").innerHTML = x;
+        let y = document.getElementById("planType").value;
+        document.getElementById("durationDisplay").innerHTML = y;
       }
     </script>
   </body>
