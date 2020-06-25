@@ -256,10 +256,10 @@
                           required
                           data-error="Please select your Plan Type"
                           placeholder="Plan Type"
-                          onchange="duration()"
+                          onchange="planDuration()"
                         >
-                          <option>Monthly</option>
-                          <option selected>Yearly</option>
+                          <option value="Monthly">Monthly</option>
+                          <option  value = "Yearly" selected>Yearly</option>
                         </select>
                         <div class="help-block with-errors"></div>
                       </div>
@@ -514,10 +514,7 @@
         total();
       }
 
-      function duration() {
-        let y = document.getElementById("planType").value;
-        document.getElementById("durationDisplay").innerHTML = y;
-      }
+     
       function students() {
         let value = document.getElementById("nostudents").value;
         document.getElementById("Tstudents").innerHTML = value;
@@ -529,6 +526,28 @@
           document.getElementById("total").innerHTML = totalprice;
 
       }
+
+        function planDuration(){
+let y = document.getElementById("planType").value;
+        document.getElementById("durationDisplay").innerHTML = y;
+  
+$(document).ready(function () {
+    $("#planType").change(function () {
+        var val = $(this).val();
+        if (val == "Monthly") {
+            $("#Plan").html("<option value='0'>Free</option><option value='1'>Basic</option><option value='2'>Professional</option><option value='3'>Premium</option>");
+        } else if(val == "Yearly"){
+            $("#Plan").html("<option selected value='0'>Free</option><option value='2'>Basic</option><option value='4'>Professional</option><option value='6'>Premium</option>");
+        } 
+    });
+});
+}
+
+        
+
+
+
+
       function defaultLoad() {
         var sel = document.getElementById("Plan");
         var text = sel.options[sel.selectedIndex].text;
